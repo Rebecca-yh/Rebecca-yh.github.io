@@ -18,21 +18,17 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Your awesome title
-email: your-email@example.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
 
 # Build settings
 remote_theme: daviddarnes/garth
 plugins:
   - jekyll-feed
+  - jekyll-remote-theme
+  - jekyll-paginate
+
+# 3. Gem settings
+paginate: 2 # jekyll-paginate > items per page
+paginate_path: page:num # jekyll-paginate > blog page
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -53,3 +49,33 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+collections:
+  posts:
+    title: Blog # Needed for Siteleaf
+    output: true
+    description: "This is merely a demo, find out more [about Garth](about)" # The post list page content
+
+# 6. Jekyll collections settings
+defaults:
+  -
+    scope:
+      path: ""
+      type: pages
+    values:
+      layout: page # Default layout
+  -
+    scope:
+      path: ""
+      type: posts
+    values:
+      layout: post # Default layout
+
+# 7. Site settings
+encoding: utf-8 # Make sure the encoding is right
+title: "Garth" # Site name or title
+logo: "/assets/logo.svg" # Site logo
+# favicon: "/favicon.ico" # Uncomment to add custom favicon, or leave as is to use site logo
+description: "A really basic theme for Jekyll, using the official Jekyll theme implementation" # Site description and default description
+url: "https://garth.darn.es" # Site url
+baseurl: ""
+lang: en-GB
