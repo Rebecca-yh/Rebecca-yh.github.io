@@ -1,6 +1,6 @@
 ---
 layout: post
-categories: Android, ConstraintLayout
+categories: Android ConstraintLayout
 ---
 
 
