@@ -53,7 +53,7 @@ collections:
   posts:
     title: Blog # Needed for Siteleaf
     output: true
-    description: "This is merely a demo, find out more [about Garth](about)" # The post list page content
+    description: "博客内容随个人兴趣野蛮生长。" # The post list page content
 
 # 6. Jekyll collections settings
 defaults:
