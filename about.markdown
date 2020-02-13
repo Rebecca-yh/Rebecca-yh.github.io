@@ -3,7 +3,7 @@ layout: page
 title: About
 ---
 
-![IMG_4625(20200213-213602)](/Users/yanghan/Downloads/IMG_4625(20200213-213602).JPG)
+![IMG_4625(https://tva1.sinaimg.cn/large/0082zybpgy1gbv47w8ndpj30hs0hsqbp.jpg)](/Users/yanghan/Downloads/IMG_4625(20200213-213602).JPG)
 
 Rebecca，目前主业为Andriod开发，工作语言为Java、kotlin、c++。
 
