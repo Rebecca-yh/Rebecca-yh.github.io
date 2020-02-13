@@ -1,0 +1,89 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8">
+<title>Resume</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Raleway:500,200,700" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+
+<link href="https://unpkg.com/material-resume@1.0.1/resume.min.css" rel="stylesheet">
+<script src="https://unpkg.com/material-resume@1.0.1/resume.min.js"></script>
+
+</head><body ng-app="Resume" ng-cloak="">
+    <resume>
+        <resume-heading first-name="杨晗"  github="Rebecca-yh" email="Rebecca.971008@gmail.com" phone="18916223267">
+        </resume-heading>
+        <resume-body>
+            <resume-column flex="20">
+                <sidebar-category name="Education">
+                    <p>TongJi University</p>
+                    <p>Graduating June 2020</p>
+                    <p>Software Engineering</p>
+                </sidebar-category>
+
+                <sidebar-category name="Coursework">
+                    <p>Data Structures</p>
+                    <p>Algorithms</p>
+                    <p>Programmings Langauges</p>
+                    <p>Operating Systems</p>
+                    <p>Software Engineering</p>
+                    <p>Discrete Math</p>
+                </sidebar-category>
+            </resume-column>
+            <resume-column flex="80">
+                <category name="Professional Experience">
+                    <category-item title="Software Development Intern" subtitle="Tencent (Summer 2019)">
+                        <li>腾讯深圳互动娱乐事业群</li>
+                        <li>游戏平台部</li>
+                        <li>参与移动客户端开发</li>
+                    </category-item>
+                    <category-item title="Short-tern Winter Program" subtitle="UC berkeley (Winter 2019)">
+                        <li>了解前沿的技术发展</li>
+                        <li>学习并体验敏捷过程</li>
+                        <li>跟随课程完成一次项目的策划</li>
+                    </category-item>
+                </category>
+                <category name="Projects">
+                    <category-item title="Gravity" subtitle="上海市创新项目(Spring 2018)   https://github.com/TJU-Gravity">
+                        <li>聚合赛事信息、帮助你找队友，赛事服务平台</li>
+                        <li>微信小程序，使用Spring作为后台框架，并借助腾讯云实现即时聊天</li>
+                        <li>负责后台的架构与开发，以及Android客户端的论坛模块（原计划为Android APP）</li>
+                    </category-item>
+                    <category-item title="数据库优化实验" subtitle="内存数据库课程项目 (Autumn 2018)">
+                        <li>铁路售票系统项目中以Timensten作为Oracle的缓存，架设内存数据库以实现对数据库操作的优化</li>
+                        <li>负责测试查询语句在不同索引下的执行效率，根据查询执行计划选用合适的索引</li>
+                    </category-item>
+                    <category-item title="HCI_Project" subtitle="HCI课程项目 (Spring 2018)https://github.com/Rebecca-yh/HCI_Project">
+                        <li>3d网页商店</li>
+                        <li>用Artyom.js(Chrome限定)进行语音识别，实现智能导购</li>
+                        <li>点击店内的商品模型跳转购物链接</li>
+                    </category-item>
+                </category>
+                <category name="Skills">
+                    <category-item title="Technologies">
+                        <li><strong>Experienced With</strong> Web Back End Development \ App Development \ Functional Programming</li>
+                        <li><strong>Programming</strong> Java \ C \ C++</li>
+                        <li><strong>Databases</strong> Oracle \  MySQL </li>
+                        <li><strong>Frameworks</strong> Spring, Android </li>
+                    </category-item>
+                </category>
+
+                <category name="Self Introduction">
+                    <category-item title="Self-evaluation">
+                    <li>自学能力良好，且在自学过程中打下了扎实的基础；</li>
+                    <li>对编程工作十分热衷； 享受解决问题的过程；</li>
+                    <li>逻辑思维能力较强，善于将抽象事物具象化；</li>
+                    <li> 学习涉猎范围较广，习惯自我摸索和事后总结反思，对摸索和反思结果会进行系统性整理；</li>
+                    <li>自认为不足之处在于涉猎面过于广泛，而对于专业领域的一部分知识不够精通。</li>
+                    </category-item>
+                </category>
+            </resume-column>
+        </resume-body>
+    </resume>
+
+
+</body></html>
