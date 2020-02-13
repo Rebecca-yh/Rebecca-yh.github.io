@@ -9,9 +9,9 @@ categories: Android, ConstraintLayout
 
 ## 卡顿：ConstraintLayout嵌套导致布局时间过长
 
-在对呱聊进行卡顿优化的时候，我观察到除了主线程进行的处理太多之外（深绿色），另一个问题是Measure非常的耗时（浅绿色）。
+在对呱聊（app已死2333）进行卡顿优化的时候，我观察到除了主线程进行的处理太多之外（深绿色），另一个问题是Measure非常的耗时（浅绿色）。
 
-<img style="width:300px" src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8vc0qrbr1j30u01o0tsp.jpg" align=center />
+![image-20191111164451885](https://tva1.sinaimg.cn/large/006y8mN6gy1g8vc0qrbr1j30u01o0tsp.jpg)
 
 于是我就对主线程进行了追踪（trace），结果显示在切换房间的时候，Measure占用超过50%的时间。
 
