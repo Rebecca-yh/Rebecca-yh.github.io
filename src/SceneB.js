@@ -16,14 +16,13 @@ export default class SceneB extends Phaser.Scene {
         if(this.game.win)
         this.text = this.add.text(400, 400, 'You Win!');
         else
-        this.text = this.add.text(400, 400, 'GameOver');
+        this.text = this.add.text(400, 400, 'Game Over');
    
 
     
     }
     
     update() {
-    
     
     
     }
