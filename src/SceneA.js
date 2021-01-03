@@ -32,7 +32,7 @@ export default class SceneA extends Phaser.Scene {
         this.foodSum = 0;
         this.monsterSum = 0;
         this.portalCoolDown;
-        this.countDown = 0;;
+        this.countDown = 0;
 
         
         this.monsterDamage = 5;
@@ -43,6 +43,8 @@ export default class SceneA extends Phaser.Scene {
         this.minMonster;
         this.currentShelter = 0;
         this.foodFromMonster;
+        this.foodTime;
+        this.foodCountDown = 0;
        
     }
 
@@ -116,6 +118,7 @@ getData(){
             that.monsterDamage = json["monsterDamage"];
             that.portalCooldown = json["portalCooldown"];
             that.foodFromMonster = json["foodFromMonster"];
+            that.foodTime = json["foodTime"];
             that.initScene();
         
         }
@@ -232,7 +235,25 @@ getData(){
         // this.shelter();
         this.steven.lastGridX = gridX;
         this.steven.lastGridY = gridY;
+        
+        this.eatFood();
 
+    }
+
+    eatFood(){
+        if(this.foodCountDown == 0){
+            this.steven.food-=1;
+            this.text.setText('food: ' + this.steven.food+'   eat food!');
+            if(this.steven.food<0){
+                //GameOver
+                this.scene.pause();
+                this.scene.run('sceneB');
+               
+            }
+            this.foodCountDown = this.foodTime;
+        }else{
+            this.foodCountDown--;
+        }
     }
 
 
