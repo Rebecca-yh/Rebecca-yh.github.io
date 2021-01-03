@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.50.0/dist/phaser-arcade-physics.js"></script>
 
 <head>
@@ -7,11 +8,20 @@
 
 <body>
 
+ 
+
+
     <script src="./src/Game.js" type="module">
        
       
     </script>
-
+    <div>
+      W,A,S,D移动，收集food，地图上food少于50时会新增食物，按键R刷新食物</br>
+      SPACE建造shelter（需要10点food），自动收集附近3*3的food</br>
+      打倒一个monster消耗5点damage，收集10点food，按键F传送</br>
+      按U将food转化为damage转化公式：n（damage）=5（food）*n（shelter)</br>
+      清空地图上的monster即胜利，damage不够时遭遇monster即失败
+    </div>
 </body>
 
 </html>
