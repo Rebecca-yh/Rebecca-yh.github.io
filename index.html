@@ -84,10 +84,10 @@
             <div class='text'>Alignment: {{alignment }}</div>
 
 
-            <div v-for="item of attributes" class='text'>
+            <div v-for="item of attributes" class='small-text'>
                 {{item.attribute}}: {{item.value}}
             </div>
-            <div class='text'>Occupation: {{occupation}}</div>
+            <div class='large-text' >{{character}} {{occupation}}</div>
             <div v-for="item of traits" class='text'>
                 “{{item}}”
             </div>
@@ -124,6 +124,7 @@
                             { attribute: "Charisma", value: 1 },
                             { attribute: "intelligence", value: 1 },
                             { attribute: "Wisdom", value: 1 },],
+                            character:'childish',
                     occupation: 'Ranger',
                     traits: ['Charismatic Negotiator', 'Grey Eminence', 'Brilliant Strategist'],
                     before: true,
