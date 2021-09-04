@@ -1,3 +1,5 @@
+html { overflow-y: scroll; }
+
 
 @font-face {
     font-family: testFont;
@@ -16,7 +18,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    max-height: 100vh;
+
   }
 
   .text{
@@ -49,8 +52,9 @@
     font-size: 22px;
     color: white;
     font-family: testFont;
-    margin-top: 20px;
-    text-align:center
+    margin-top: 10px;
+    margin-bottom: 10px;
+
   }
   .group{
       margin-top: 20px;
@@ -60,10 +64,12 @@
   }
 .container{
     position: absolute;
+    top:50px;
     left: 30%;
     right: 30%;
-    margin-left: auto;
+    margin-left:auto;
     margin-right: auto;
+    
 }
 
 .option{
