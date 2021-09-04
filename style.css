@@ -3,7 +3,7 @@ html { overflow-y: scroll; }
 
 @font-face {
     font-family: testFont;
-    src: url(./Plakat-Fraktur\ Black.ttf);
+    src: url(./King\ Arthur\ Special\ Normal.ttf);
 }
 .card {
     border: 25px solid #B88846;
