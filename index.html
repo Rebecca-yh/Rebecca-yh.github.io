@@ -1,27 +1,194 @@
-<!DOCTYPE html>
 <html>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script src="https://cdn.jsdelivr.net/npm/phaser@3.50.0/dist/phaser-arcade-physics.js"></script>
 
 <head>
-</head>
+    <link href="./style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- <script type="module">
+            import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js'
+          </script></head> -->
 
 <body>
+    <template id="radio-set">
+        <div class='option'>
+            <label v-for="option in options" :key="option">
+<div class='option'>
+                <input type="radio" :value="option" :checked="option == value" @change="$emit('input', option)">
+                {{ option}}
+            </div>
+            </label>
+        </div>
+    </template>
+    <script type='text/javascript'>
 
- 
 
-
-    <script src="./src/Game.js" type="module">
-       
-      
+        // component
+        Vue.component('radio-set', {
+            template: '#radio-set',
+            props: {
+                'value': '',
+                'options': '',
+            }
+        })
     </script>
-    <div>
-      W,A,S,D移动，收集food，地图上food少于50时会新增食物，按键R刷新食物</br>
-      SPACE建造shelter（需要10点food），自动收集附近3*3的food</br>
-      打倒一个monster消耗5点damage，收集10点food，按键F传送</br>
-      按U将food转化为damage转化公式：n（damage）=5（food）*n（shelter)</br>
-      清空地图上的monster即胜利，damage不够时遭遇monster即失败
+
+
+
+    <div id="app" class='container'>
+        <div class="card">
+            <div class="title">
+                {{ story }}
+            </div>
+        </div>
+        <div class='text'>
+
+        </div>
+        <div v-if='before'>
+            <div class='text'>
+                <div class="group">
+                    <div>Gender: {{gender }}</div>
+
+                    <radio-set label-name="Radio button set" v-model="gender" :options="genderOptions"></radio-set>
+                </div>
+                <div class="group">
+                    <div>Race: {{race }}</div>
+                    <radio-set label-name="Radio button set" v-model="race" :options="raceOptions"></radio-set>
+                </div>
+                <div class="group">
+                    <div>Alignment: {{alignment}}</div>
+                    <radio-set label-name="Radio button set" v-model="alignment" :options="alignmentOptions">
+                    </radio-set>
+                </div>
+                <div class="group">
+                    <div>Attributes Points: {{currentPoints}}</div>
+                    <div v-if="errorPoint" class='error'>Error Point!</div>
+                    <div v-for="item of attributes" class="small-text">
+                        {{item.attribute}}:
+                        <input v-model="item.value" type='number' min="1" v-on:change="calculatePoint" style="width:40px;">
+                    </div>
+                </div>
+            </div>
+            <center>
+                <button v-on:click="randomAttributes">random</button>
+                <br>
+                <button v-on:click="mint">mint</button>
+            </center>
+        </div>
+
+        <div v-if='after' >
+            <div class='text'>Gender: {{gender }}</div>
+
+
+            <div class='text'>Race: {{race }}</div>
+
+            <div class='text'>Alignment: {{alignment }}</div>
+
+
+            <div v-for="item of attributes" class='text'>
+                {{item.attribute}}: {{item.value}}
+            </div>
+            <div class='text'>Occupation: {{occupation}}</div>
+            <div v-for="item of traits" class='text'>
+                “{{item}}”
+            </div>
+
+        </div>
+
+
+
     </div>
+
+    <script type='text/javascript'>
+
+
+
+        var app = new Vue({
+            el: '#app',
+            data: function () {
+                return {
+                    story: 'ROLE',
+                    genderOptions: ['Male', 'Female'],
+                    gender: '',
+                    raceOptions: ["Human", "Elf", "Orc", "Undead", "Demons", "Deity"],
+                    race: '',
+                    alignmentOptions: ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
+                    alignment: '',
+                    sum: 30,
+                    currentPoints: 24,
+                    errorPoint: false,
+                    attributes:
+                        [
+                            { attribute: "Strength", value: 1 },
+                            { attribute: "Dexterity", value: 1 },
+                            { attribute: "Constitution", value: 1 },
+                            { attribute: "Charisma", value: 1 },
+                            { attribute: "intelligence", value: 1 },
+                            { attribute: "Wisdom", value: 1 },],
+                    occupation: 'Ranger',
+                    traits: ['Charismatic Negotiator', 'Grey Eminence', 'Brilliant Strategist'],
+                    before: true,
+                    after: false,
+                }
+            },
+            methods: {
+                calculatePoint: function (event) {
+
+                    this.currentPoints = this.sum
+                    this.attributes.forEach(item => {
+                        this.currentPoints = this.currentPoints - item.value
+                    });
+                    if (this.currentPoints < 0) {
+                        this.errorPoint = true
+                    } else {
+                        this.errorPoint = false
+                    }
+                },
+                randomAttributes: function (event) {
+
+                    var arr = [0, 1, 2, 3, 4, 5];
+                    arr.sort(this.randomSort)
+
+                    this.currentPoints =24;
+                    var count = 0;
+                    arr.forEach(i => {
+                        count++
+                        if (count < 6) {
+                            var value = Math.floor(Math.random() *( this.currentPoints>8?8:this.currentPoints))
+                            this.attributes[i].value = value+1;
+                            this.currentPoints -= value
+                            // console.log(value,this.currentPoints)
+                        } else {
+                            this.attributes[i].value = this.currentPoints+1 
+                            this.currentPoints = 0
+                        }
+                       
+                        var i = Math.floor(Math.random() *(this.genderOptions.length))
+                        this.gender=this.genderOptions[i]
+                        i = Math.floor(Math.random() *(this.raceOptions.length))
+                        this.race=this.raceOptions[i]
+                        var i = Math.floor(Math.random() *(this.alignmentOptions.length))
+                        this.alignment=this.alignmentOptions[i]
+                    })
+                },
+                randomSort: function (a, b) {
+                    return Math.random() > 0.5 ? -1 : 1;
+                },
+                mint: function (event) {
+                    if(this.gender.length==0||this.race.length==0||this.alignment.length==0){
+                        alert('Each field must have data! '); 
+                    }else if(this.currentPoints<0){
+                        alert('Error attributes points!');
+                    }else{
+                    this.before = false
+                    this.after = true
+                }
+                }
+            }
+
+        })
+
+
+    </script>
+
 </body>
 
 </html>
