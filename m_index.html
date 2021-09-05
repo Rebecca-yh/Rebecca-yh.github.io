@@ -33,31 +33,19 @@
 
 
 
-    <div id="app" >
+    <div id="app" class='container'>
 
-       
+        <div class='text'>
+
+        </div>
         <div v-if='before'>
-            <div class='container-left'>
             <div style="margin-bottom: 80px;">
                 <img src='./Intro.svg' />
             </div>
-        </div>
-        <div class='container-right'>
+
             <div class="panel">
                 <img src="./logo.svg" />
                 <div class='large-text'>
-                    <div style="width: 40%; left: 55%; position:absolute">
-                        <div class="group">
-                            <div>Attributes Points: {{currentPoints}}</div>
-                            <div v-if="errorPoint" class='error'>Error Point!</div>
-                            <div v-for="item of attributes" class="text">
-                                {{item.attribute}}:
-                                <input v-model="item.value" type='number' min="1" v-on:change="calculatePoint"
-                                    style="width:40px;">
-                            </div>
-                        </div>
-                        </div>
-                    <div style="width: 40%; left: 5%;position:absolute">
                     <div class="group">
                         <div>Gender: {{gender }}</div>
 
@@ -72,8 +60,15 @@
                         <radio-set label-name="Radio button set" v-model="alignment" :options="alignmentOptions">
                         </radio-set>
                     </div>
-                </div>
-           
+                    <div class="group">
+                        <div>Attributes Points: {{currentPoints}}</div>
+                        <div v-if="errorPoint" class='error'>Error Point!</div>
+                        <div v-for="item of attributes" class="small-text">
+                            {{item.attribute}}:
+                            <input v-model="item.value" type='number' min="1" v-on:change="calculatePoint"
+                                style="width:40px;">
+                        </div>
+                    </div>
                 </div>
                 <div style="text-align: center; margin-bottom: 30px;">
                     <button v-on:click="randomAttributes">random</button>
@@ -82,7 +77,6 @@
                 </div>
 
             </div>
-        </div>
         </div>
 
         <div v-if='after'>
@@ -109,6 +103,9 @@
     </div>
 
     <script type='text/javascript'>
+
+
+
         var app = new Vue({
             el: '#app',
             data: function () {
@@ -199,8 +196,9 @@
             mounted: function () {
                 
                 if (this.isMobile()) {
-                    window.location.replace("./m_index")
+
                 } else {
+                    window.location.replace("./index")
                 }
             }
 
